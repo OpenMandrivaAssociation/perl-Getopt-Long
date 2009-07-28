@@ -1,21 +1,19 @@
+%define upstream_name    Getopt-Long
+%define upstream_version 2.38
 
-%define realname   Getopt-Long
-%define version    2.38
-%define release    %mkrel 2
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
-Name:       perl-%{realname}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
 Summary:    Advanced handling of command line options
-Source:     http://www.cpan.org/modules/by-module/Getopt/%{realname}-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/%{realname}
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: perl-devel
-BuildRequires: perl(Pod::Usage)
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Getopt/%{upstream_name}-%{upstream_version}.tar.gz
 
+BuildRequires: perl(Pod::Usage)
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The Getopt::Long module implements an extended getopt function called
@@ -27,11 +25,8 @@ the more traditional single-letter approach, is provided but not enabled by
 default.
 
 
-
-
-
 %prep
-%setup -q -n %{realname}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -52,5 +47,4 @@ rm -rf %buildroot
 %doc CHANGES README README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
 
