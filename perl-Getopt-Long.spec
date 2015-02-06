@@ -2,7 +2,7 @@
 %define upstream_version 2.42
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	2
+Release:	3
 
 Summary:	Advanced handling of command line options
 License:	GPL+ or Artistic
